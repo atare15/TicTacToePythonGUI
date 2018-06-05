@@ -35,7 +35,6 @@ def chooseRandomMoveFromList(board, movesList):
     for i in movesList:
         if isSpaceFree(board, i):
             possibleMoves.append(i)
-            print(str(i))
     if len(possibleMoves) != 0:
         return random.choice(possibleMoves)
     else:
