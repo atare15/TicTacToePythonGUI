@@ -10,7 +10,7 @@ N=tk.N
 S=tk.S
 
 LARGE_FONT = ("Verdana", 20, "bold")
-playerLetter='O'
+playerLetter=' '
 bclick=True
 # Define the board
 theBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
@@ -35,6 +35,7 @@ def chooseRandomMoveFromList(board, movesList):
     for i in movesList:
         if isSpaceFree(board, i):
             possibleMoves.append(i)
+            print(str(i))
     if len(possibleMoves) != 0:
         return random.choice(possibleMoves)
     else:
@@ -320,11 +321,9 @@ class PageOne(tk.Frame):
 
 
 class PageTwo(tk.Frame):
-    global playerLetter
     move=0
     bclick=True
     def __init__(self, parent, controller):
-        global playerLetter
         global move
         tk.Frame.__init__(self, parent, bg="DeepSkyBlue2")
         self.grid(sticky=N + S + E + W)
@@ -399,7 +398,6 @@ class PageTwo(tk.Frame):
             else:
                 messagebox.showwarning("Invalid Move", "That spot is already taken")
                 return
-            #print(bclick)
 
 
 
@@ -410,9 +408,6 @@ class PageTwo(tk.Frame):
                 if isBoardFull(theBoard):
                     popup("The Game is a Tie!")
                     return
-
-            #move = getComputerMove(theBoard, computerLetter)
-
 
             if isWinner(theBoard, computerLetter):
                 popup("Player 2 Wins!")
@@ -476,12 +471,6 @@ class PageTwo(tk.Frame):
             b2 = ttk.Button(popup, text='No', command=leaveX)
             b2.pack()
             popup.mainloop()
-
-
-
-
-
-
 
 
 
